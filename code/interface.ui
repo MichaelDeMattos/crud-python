@@ -17,6 +17,7 @@
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkToolbar" id="toolbar1">
+            <property name="name">toolbar</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="toolbar_style">both</property>
@@ -404,6 +405,7 @@
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkToolbar" id="toolbar">
+            <property name="name">toolbar</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="toolbar_style">both</property>
@@ -471,6 +473,12 @@
       </object>
     </child>
   </object>
+  <object class="GtkLabel" id="label1">
+    <property name="name">bt</property>
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label" translatable="yes">Sair</property>
+  </object>
   <object class="GtkListStore" id="lst_grade_aluno">
     <columns>
       <!-- column-name cod -->
@@ -490,13 +498,22 @@
     </columns>
     <data>
       <row>
-        <col id="0" translatable="yes"/>
-        <col id="1" translatable="yes"/>
-        <col id="2" translatable="yes"/>
-        <col id="3" translatable="yes"/>
-        <col id="4" translatable="yes"/>
-        <col id="5" translatable="yes"/>
-        <col id="6" translatable="yes"/>
+        <col id="0" translatable="yes">1</col>
+        <col id="1" translatable="yes">MICHAEL DE MATTOS</col>
+        <col id="2" translatable="yes">27/02/1994</col>
+        <col id="3" translatable="yes">RUA A</col>
+        <col id="4" translatable="yes">BAIRRO A</col>
+        <col id="5" translatable="yes">CIDADE X</col>
+        <col id="6" translatable="yes">SP</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">2</col>
+        <col id="1" translatable="yes">LUIS DA CUNHA</col>
+        <col id="2" translatable="yes">27/01/1990</col>
+        <col id="3" translatable="yes">RUA Y</col>
+        <col id="4" translatable="yes">BAIRRO B</col>
+        <col id="5" translatable="yes">CIDADE X</col>
+        <col id="6" translatable="yes">SP</col>
       </row>
     </data>
   </object>
@@ -514,6 +531,7 @@
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkToolbar" id="toolbar2">
+            <property name="name">toolbar</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="toolbar_style">both</property>
@@ -525,6 +543,12 @@
                   <object class="GtkEntry" id="entry_nome_aluno">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="margin_left">5</property>
+                    <property name="margin_right">5</property>
+                    <property name="margin_top">5</property>
+                    <property name="margin_bottom">5</property>
+                    <property name="overwrite_mode">True</property>
+                    <signal name="insert-text" handler="editar" swapped="no"/>
                   </object>
                 </child>
               </object>
@@ -563,10 +587,11 @@
             </child>
             <child>
               <object class="GtkToolButton" id="bt_sair_jn_multi_tarefa">
+                <property name="name">bt</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Sair</property>
                 <property name="use_underline">True</property>
+                <property name="label_widget">label1</property>
                 <property name="stock_id">gtk-quit</property>
                 <signal name="clicked" handler="ao_clicar_sair_jn_multi_tarefa" swapped="no"/>
               </object>
@@ -584,11 +609,13 @@
         </child>
         <child>
           <object class="GtkScrolledWindow" id="rolagem">
+            <property name="name">rolagem</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="shadow_type">in</property>
             <child>
               <object class="GtkTreeView" id="grade_alunos">
+                <property name="name">grade</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="model">lst_grade_aluno</property>
@@ -680,6 +707,39 @@
             <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMessageDialog" id="msg_box">
+    <property name="can_focus">False</property>
+    <property name="type_hint">dialog</property>
+    <property name="buttons">ok</property>
+    <child>
+      <placeholder/>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can_focus">False</property>
+            <property name="homogeneous">True</property>
+            <property name="layout_style">end</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
           </packing>
         </child>
       </object>
