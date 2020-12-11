@@ -3,10 +3,9 @@
 
 import gi
 import os
-os.system("rm -rf ~/crud-python/code/UtilGtk; ln -s ~/crud-python/util/compiled/ UtilGtk")
 import sqlite3
 import datetime
-from UtilGtk.mikeUtil import MikeGtk
+from mikeUtil import MikeGtk
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk
